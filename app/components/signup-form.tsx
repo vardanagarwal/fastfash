@@ -41,8 +41,8 @@ export default function SignupForm() {
   if (submitted) {
     return (
       <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white px-6 py-4 rounded-lg shadow-lg" role="alert">
-        <strong className="text-xl font-bold block mb-2">You're in the fast lane, {name}! 🚀</strong>
-        <p className="text-lg">We'll ping you when we launch. Get ready for fashion at warp speed!</p>
+        <strong className="text-xl font-bold block mb-2">You&apos;re in the fast lane, {name}! 🚀</strong>
+        <p className="text-lg">We&apos;ll ping you when we launch. Get ready for fashion at warp speed!</p>
       </div>
     )
   }

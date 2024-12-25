@@ -13,7 +13,7 @@ export async function POST(request: Request) {
       },
     })
     return NextResponse.json(signup)
-  } catch (error) {
+  } catch (err) {
     return NextResponse.json(
       { error: 'Error creating signup' },
       { status: 500 }

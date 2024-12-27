@@ -83,7 +83,7 @@ export default function SignupForm() {
       <Button 
         type="submit" 
         disabled={isLoading}
-        className="w-full bg-yellow-300 text-purple-700 hover:bg-yellow-400 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50 shadow-lg"
+        className="w-full bg-purple-800 hover:bg-purple-700 text-white transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:ring-opacity-50 shadow-lg"
       >
         {isLoading ? 'Joining...' : 'Join the Fast Lane'}
       </Button>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import * as pixel from '@/lib/fpixel'
 
 export default function SignupForm() {
   const [name, setName] = useState('')
@@ -39,6 +40,7 @@ export default function SignupForm() {
   }
 
   if (submitted) {
+    pixel.signup({ name, contact })
     return (
       <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white px-6 py-4 rounded-lg shadow-lg" role="alert">
         <strong className="text-xl font-bold block mb-2">You&apos;re in the fast lane, {name}! 🚀</strong>

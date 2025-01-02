@@ -32,7 +32,7 @@ export default function Home() {
             Fashion at <span className="text-purple-700">Light Speed</span>
           </h2>
           <p className="mt-4 text-xl text-white">
-            Trending styles delivered in just <span className="font-bold bg-purple-700 bg-opacity-20 backdrop-blur-sm text-white px-3 py-1 rounded-lg border border-fuchsia-400/30">10 minutes</span>
+            Trending styles delivered in just <span className="font-bold bg-purple-700 bg-opacity-20 backdrop-blur-sm text-white px-3 py-1 rounded-lg border border-fuchsia-400/30">29 minutes</span>
           </p>
           </div>
           <SignupForm />

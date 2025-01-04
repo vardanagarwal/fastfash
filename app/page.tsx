@@ -19,21 +19,21 @@ export default function Home() {
 
       <header className="py-6 relative">
         <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-extrabold text-center text-white tracking-tight">
-          Fast<span className="text-purple-700">Fash</span>
-        </h1>
+          <p className="mt-4 text-s text-white text-center">
+            Trending styles in <span className="text-amber-100">29 minutes</span>
+          </p>
         </div>
       </header>
 
       <main className="flex-grow flex items-center justify-center px-4 relative">
         <div className="max-w-md w-full space-y-8">
           <div className="text-center">
-          <h2 className="mt-6 text-5xl font-extrabold text-white leading-tight">
-            Fashion at <span className="text-purple-700">Light Speed</span>
-          </h2>
-          <p className="mt-4 text-xl text-white">
-            Trending styles delivered in just <span className="font-bold bg-purple-700 bg-opacity-20 backdrop-blur-sm text-white px-3 py-1 rounded-lg border border-fuchsia-400/30">29 minutes</span>
-          </p>
+          {/* <h2 className="mt-6 text-5xl font-extrabold text-white leading-tight">
+            Fashion at <span className="text-amber-100">Light Speed</span>
+          </h2> */}
+          <h1 className="text-4xl font-extrabold text-center text-white tracking-tight">
+            FAST<span className="text-amber-100">FASH</span>
+          </h1>
           </div>
           <SignupForm />
         </div>

@@ -19,7 +19,7 @@ export default function Home() {
 
       <header className="py-6 relative">
         <div className="container mx-auto px-4">
-          <p className="mt-4 text-s text-white text-center">
+          <p className="mt-4 text-s text-white text-center font-['Tan_Harmoni']">
             Trending styles in <span className="text-amber-100">29 minutes</span>
           </p>
         </div>
@@ -31,7 +31,7 @@ export default function Home() {
           {/* <h2 className="mt-6 text-5xl font-extrabold text-white leading-tight">
             Fashion at <span className="text-amber-100">Light Speed</span>
           </h2> */}
-          <h1 className="text-4xl font-extrabold text-center text-white tracking-tight">
+          <h1 className="text-4xl font-extrabold text-center text-white tracking-tight font-['Tan_Harmoni']">
             FAST<span className="text-amber-100">FASH</span>
           </h1>
           </div>
@@ -40,7 +40,7 @@ export default function Home() {
       </main>
 
       <footer className="py-4 relative">
-        <div className="container mx-auto px-4 text-center text-sm text-white opacity-75">
+        <div className="container mx-auto px-4 text-center text-sm text-white opacity-75 font-['Tan_Harmoni']">
           © 2025 FastFash. Stay stylish, stay fast.
         </div>
       </footer>

@@ -74,3 +74,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: 'Tan Harmoni';
+  src: url('/fonts/TanHarmoni-Regular.woff2') format('woff2'),
+       url('/fonts/TanHarmoni-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -42,7 +42,7 @@ export default function SignupForm() {
   if (submitted) {
     pixel.signup({ name, contact })
     return (
-      <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white px-6 py-4 rounded-lg shadow-lg" role="alert">
+      <div className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white px-6 py-4 rounded-lg shadow-lg font-['Tan_Harmoni']" role="alert">
         <strong className="text-xl font-bold block mb-2">You&apos;re in the fast lane, {name}! 🚀</strong>
         <p className="text-lg">We&apos;ll ping you when we launch. Get ready for fashion at warp speed!</p>
       </div>
@@ -57,35 +57,35 @@ export default function SignupForm() {
         </div>
       )}
       <div className="space-y-4">
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          autoComplete="name"
-          required
-          disabled={isLoading}
-          className="rounded-lg border-0 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white placeholder-yellow-300 placeholder-opacity-75 focus:ring-2 focus:ring-yellow-300"
-          placeholder="Your name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <Input
-          id="contact"
-          name="contact"
-          type="text"
-          autoComplete="email tel"
-          required
-          disabled={isLoading}
-          className="rounded-lg border-0 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white placeholder-yellow-300 placeholder-opacity-75 focus:ring-2 focus:ring-yellow-300"
-          placeholder="Your email or phone number"
-          value={contact}
-          onChange={(e) => setContact(e.target.value)}
-        />
+      <Input
+        id="name"
+        name="name"
+        type="text"
+        autoComplete="name"
+        required
+        disabled={isLoading}
+        className="border-0 border-b-2 border-black bg-transparent text-white placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-10 font-['Tan_Harmoni']"
+        placeholder="Your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <Input
+        id="contact"
+        name="contact"
+        type="text"
+        autoComplete="email tel"
+        required
+        disabled={isLoading}
+        className="border-0 border-b-2 border-black bg-transparent text-white placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-10 font-['Tan_Harmoni']"
+        placeholder="Your email or phone number"
+        value={contact}
+        onChange={(e) => setContact(e.target.value)}
+      />
       </div>
       <Button 
         type="submit" 
         disabled={isLoading}
-        className="w-full bg-amber-100 opacity-50 hover:bg-purple-700 text-black transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-700 focus:ring-opacity-50 shadow-lg"
+        className="w-full bg-amber-100 opacity-20 hover:bg-amber-100 hover:opacity-50 text-black transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-opacity-50 shadow-lg font-['Tan_Harmoni']"
       >
         {isLoading ? 'Joining...' : 'Join the Fast Lane'}
       </Button>

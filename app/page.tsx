@@ -7,7 +7,7 @@ export default function Home() {
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/fashion-bg.jpg" // You'll need to add this image to your public folder
+          src="/fashion-bg.gif" // You'll need to add this image to your public folder
           alt="Fashion Background"
           fill
           priority

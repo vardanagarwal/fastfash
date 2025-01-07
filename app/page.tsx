@@ -11,6 +11,7 @@ export default function Home() {
           alt="Fashion Background"
           fill
           priority
+          unoptimized
           className="object-cover"
         />
         {/* Optional overlay to ensure text readability */}

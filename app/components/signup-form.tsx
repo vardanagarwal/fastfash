@@ -64,8 +64,8 @@ export default function SignupForm() {
         autoComplete="name"
         required
         disabled={isLoading}
-        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni']"
-        placeholder="Your name"
+        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
+        placeholder="Name"
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
@@ -76,8 +76,8 @@ export default function SignupForm() {
         autoComplete="email tel"
         required
         disabled={isLoading}
-        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni']"
-        placeholder="Your email or phone number"
+        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
+        placeholder="Email"
         value={contact}
         onChange={(e) => setContact(e.target.value)}
       />

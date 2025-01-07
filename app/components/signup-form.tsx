@@ -64,7 +64,7 @@ export default function SignupForm() {
         autoComplete="name"
         required
         disabled={isLoading}
-        className="border-0 border-b-2 border-black bg-transparent text-white placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-10 font-['Tan_Harmoni']"
+        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni']"
         placeholder="Your name"
         value={name}
         onChange={(e) => setName(e.target.value)}
@@ -76,7 +76,7 @@ export default function SignupForm() {
         autoComplete="email tel"
         required
         disabled={isLoading}
-        className="border-0 border-b-2 border-black bg-transparent text-white placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-10 font-['Tan_Harmoni']"
+        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni']"
         placeholder="Your email or phone number"
         value={contact}
         onChange={(e) => setContact(e.target.value)}

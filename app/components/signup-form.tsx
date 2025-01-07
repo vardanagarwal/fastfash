@@ -11,11 +11,25 @@ export default function SignupForm() {
   const [submitted, setSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
+  const [emailError, setEmailError] = useState('')
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
+    setEmailError('')
+
+    // Email validation
+    if (!validateEmail(contact)) {
+      setEmailError('Please enter a valid email address')
+      setIsLoading(false)
+      return
+    }
 
     try {
       const response = await fetch('/api/signup', {
@@ -69,18 +83,28 @@ export default function SignupForm() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <Input
-        id="contact"
-        name="contact"
-        type="text"
-        autoComplete="email tel"
-        required
-        disabled={isLoading}
-        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
-        placeholder="Email"
-        value={contact}
-        onChange={(e) => setContact(e.target.value)}
-      />
+      <div>
+        <Input
+          id="contact"
+          name="contact"
+          type="email"
+          autoComplete="email"
+          required
+          disabled={isLoading}
+          className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
+          placeholder="Email"
+          value={contact}
+          onChange={(e) => {
+            setContact(e.target.value)
+            setEmailError('')  // Clear error when user types
+          }}
+        />
+        {emailError && (
+          <div className="text-red-400 text-sm mt-1">
+            {emailError}
+          </div>
+        )}
+      </div>
       </div>
       <Button 
         type="submit" 

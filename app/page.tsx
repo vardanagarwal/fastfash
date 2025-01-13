@@ -1,13 +1,17 @@
 import SignupForm from './components/signup-form'
 import Image from 'next/image'
+import Script from 'next/script'
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col relative">
+      <Script 
+        src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+      />
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
         <Image
-          src="/fashion-bg.gif" // You'll need to add this image to your public folder
+          src="/fashion-bg.gif"
           alt="Fashion Background"
           fill
           priority

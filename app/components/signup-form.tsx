@@ -5,6 +5,15 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import * as pixel from '@/lib/fpixel'
 
+// Add type for grecaptcha
+declare global {
+  interface Window {
+    grecaptcha: {
+      execute: (siteKey: string, options: { action: string }) => Promise<string>
+    }
+  }
+}
+
 export default function SignupForm() {
   const [name, setName] = useState('')
   const [contact, setContact] = useState('')
@@ -16,6 +25,19 @@ export default function SignupForm() {
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     return emailRegex.test(email)
+  }
+
+  const executeRecaptcha = async () => {
+    try {
+      const token = await window.grecaptcha.execute(
+        process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string,
+        { action: 'submit' }
+      )
+      return token
+    } catch (error) {
+      console.error('reCAPTCHA error:', error)
+      throw new Error('Failed to verify you are human. Please try again.')
+    }
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,22 +54,30 @@ export default function SignupForm() {
     }
 
     try {
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha()
+
       const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, contact }),
+        body: JSON.stringify({
+          name,
+          contact,
+          recaptchaToken
+        }),
       })
-      
+
       if (!response.ok) {
-        throw new Error('Signup failed. Please try again.')
+        const data = await response.json()
+        throw new Error(data.error || 'Signup failed. Please try again.')
       }
-      
+
       setSubmitted(true)
     } catch (error) {
       console.error('Error:', error)
-      setError('Something went wrong. Please try again.')
+      setError(error instanceof Error ? error.message : 'Something went wrong. Please try again.')
     } finally {
       setIsLoading(false)
     }
@@ -71,43 +101,43 @@ export default function SignupForm() {
         </div>
       )}
       <div className="space-y-4">
-      <Input
-        id="name"
-        name="name"
-        type="text"
-        autoComplete="name"
-        required
-        disabled={isLoading}
-        className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <div>
         <Input
-          id="contact"
-          name="contact"
-          type="email"
-          autoComplete="email"
+          id="name"
+          name="name"
+          type="text"
+          autoComplete="name"
           required
           disabled={isLoading}
           className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
-          placeholder="Email"
-          value={contact}
-          onChange={(e) => {
-            setContact(e.target.value)
-            setEmailError('')  // Clear error when user types
-          }}
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
-        {emailError && (
-          <div className="text-red-400 text-sm mt-1">
-            {emailError}
-          </div>
-        )}
+        <div>
+          <Input
+            id="contact"
+            name="contact"
+            type="email"
+            autoComplete="email"
+            required
+            disabled={isLoading}
+            className="border-0 border-b-2 border-black bg-transparent text-amber-50 placeholder:text-gray-400/50 focus:ring-0 focus:border-amber-50 focus:opacity-100 font-['Tan_Harmoni'] [&:-webkit-autofill]:bg-transparent [&:-webkit-autofill]:text-amber-50 [&:-webkit-autofill_selected]:bg-transparent"
+            placeholder="Email"
+            value={contact}
+            onChange={(e) => {
+              setContact(e.target.value)
+              setEmailError('')  // Clear error when user types
+            }}
+          />
+          {emailError && (
+            <div className="text-red-400 text-sm mt-1">
+              {emailError}
+            </div>
+          )}
+        </div>
       </div>
-      </div>
-      <Button 
-        type="submit" 
+      <Button
+        type="submit"
         disabled={isLoading}
         className="w-full bg-amber-100 opacity-20 hover:bg-amber-100 hover:opacity-50 text-black transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-700 focus:ring-opacity-50 shadow-lg font-['Tan_Harmoni']"
       >

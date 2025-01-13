@@ -1,6 +1,7 @@
 import SignupForm from './components/signup-form'
 import Image from 'next/image'
 import Script from 'next/script'
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   return (

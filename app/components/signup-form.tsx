@@ -71,6 +71,11 @@ export default function SignupForm() {
 
       if (!response.ok) {
         const data = await response.json()
+        if (response.status === 429) {
+          // Rate limit exceeded
+          const resetTime = new Date(data.reset * 1000);
+          throw new Error(`Too many attempts. Please try again after ${resetTime.toLocaleTimeString()}`);
+        }
         throw new Error(data.error || 'Signup failed. Please try again.')
       }
 
